@@ -66,9 +66,9 @@ import Score from './screens/runScoreCard'
     choices.push(
       <ScrollView style={{flexDirection:'column'}} key={key}>
           <View>
-              <Text style={{fontWeight:'bold',textAlign:'center'}}>{val.date}</Text>
+              <Text style={styles.date}>{val.date}</Text>
               <Text>{''}</Text>
-              <Text style={{color:'#639080',fontWeight:'bold'}}>{val.game}</Text>
+              <Text style={styles.game}>{val.game}</Text>
               <Text>{val.title}</Text>
               <Text>{''}</Text>
           </View>
@@ -83,12 +83,12 @@ import Score from './screens/runScoreCard'
           </View>
           <View style={{flexDirection:'row'}} >
               <Card><Text style={{fontSize:9}}>{val.coun2}</Text></Card>
-              <Winner><Text style={{color:'#ffff',fontWeight:'bold'}}>{val.players.name2}[{val.seed2}]</Text></Winner>
-              <Card><Text>{val.scores2.set1}</Text></Card>
-              <Card><Text>{val.scores2.set2}</Text></Card>
-              <Card><Text>{val.scores2.set3}</Text></Card>
-              <Card><Text>{val.scores2.set4}</Text></Card>
-              <Card><Text>{val.scores1.set5}</Text></Card>
+              <Winner><Text style={styles.win}>{val.players.name2}[{val.seed2}]</Text></Winner>
+              <Card><Text style={styles.win}>{val.scores2.set1}</Text></Card>
+              <Card><Text style={styles.win}>{val.scores2.set2}</Text></Card>
+              <Card><Text style={styles.win}>{val.scores2.set3}</Text></Card>
+              <Card><Text style={styles.win}>{val.scores2.set4}</Text></Card>
+              <Card><Text style={styles.win}>{val.scores1.set5}</Text></Card>
           </View> 
       </ScrollView>
     )
@@ -101,9 +101,9 @@ import Score from './screens/runScoreCard'
     this.state.dataSource2.map((val:any,key:any)=>{
     choices1.push(
       <ScrollView style={{flexDirection:'column'}} key={key}>
-          <Text style={{fontWeight:'bold',textAlign:'center'}}>{val.date}</Text>
+          <Text style={styles.date}>{val.date}</Text>
           <View><Text>{''}</Text>
-            <Text style={{color:'#639080',fontWeight:'bold'}}>{val.game}</Text>
+            <Text style={styles.game}>{val.game}</Text>
             <Text>{val.title}</Text><Text>{''}</Text>
           </View>
           <View key={key} style={{flexDirection:'row'}} >
@@ -118,14 +118,14 @@ import Score from './screens/runScoreCard'
           <View style={{flexDirection:'row'}} >
               <Card><Text style={{fontSize:9}}>{val.country1}</Text></Card>
               <Winner >
-                <Text style={{color:'#ffff',fontWeight:'bold'}}>{val.runner}</Text>
-                <Text style={{color:'#ffff',fontWeight:'bold'}}>{val.runner1}</Text>
+                <Text style={styles.win}>{val.runner}</Text>
+                <Text style={styles.win}>{val.runner1}</Text>
               </Winner>
-              <Card><Text>{val.scores2.set1}</Text></Card> 
-              <Card><Text>{val.scores2.set2}</Text></Card>
-              <Card><Text>{val.scores2.set3}</Text></Card>
-              <Card><Text>{val.scores2.set4}</Text></Card>
-              <Card><Text>{val.scores2.set5}</Text></Card>
+              <Card><Text style={styles.win}>{val.scores2.set1}</Text></Card> 
+              <Card><Text style={styles.win}>{val.scores2.set2}</Text></Card>
+              <Card><Text style={styles.win}>{val.scores2.set3}</Text></Card>
+              <Card><Text style={styles.win}>{val.scores2.set4}</Text></Card>
+              <Card><Text style={styles.win}>{val.scores2.set5}</Text></Card>
           </View> 
       </ScrollView>
     )
@@ -159,6 +159,20 @@ import Score from './screens/runScoreCard'
     alignItems: 'center',
     backgroundColor:'#fff',
   },
+  win:{
+    color:'#ffff',
+    fontWeight:'bold',
+    fontSize:14,
+    lineHeight:18
+  },
+  game:{
+    color:'#639080',
+    fontWeight:'bold'
+  },
+  date:{
+    fontWeight:'bold',
+    textAlign:'center'
+  }
 });
 
 export default App
