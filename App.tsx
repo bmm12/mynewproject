@@ -66,10 +66,10 @@ import Score from './screens/runScoreCard'
     choices.push(
       <ScrollView style={{flexDirection:'column'}} key={key}>
           <View>
+              <Text>{''}</Text>
               <Text style={styles.date}>{val.date}</Text>
               <Text>{''}</Text>
-              <Text style={styles.game}>{val.game}</Text>
-              <Text>{val.title}</Text>
+              <Text style={styles.game}>{val.game}</Text><Text>{val.title}</Text><Text>{val.time}</Text>
               <Text>{''}</Text>
           </View>
           <View key={key} style={{flexDirection:'row'}} >
@@ -101,14 +101,14 @@ import Score from './screens/runScoreCard'
     this.state.dataSource2.map((val:any,key:any)=>{
     choices1.push(
       <ScrollView style={{flexDirection:'column'}} key={key}>
+          <Text>{''}</Text>
           <Text style={styles.date}>{val.date}</Text>
-          <View><Text>{''}</Text>
-            <Text style={styles.game}>{val.game}</Text>
-            <Text>{val.title}</Text><Text>{''}</Text>
-          </View>
+          <Text>{''}</Text>
+          <Text style={styles.game}>{val.game}</Text><Text>{val.title}</Text><Text>{val.time}</Text>
+          <Text>{''}</Text>
           <View key={key} style={{flexDirection:'row'}} >
               <Score><Text style={{fontSize:9}}>{val.country}</Text></Score>
-              <Runner><Text key={key}>{val.name}</Text><Text>{val.name1}</Text></Runner>
+              <Runner><Text key={key}>{val.team11}</Text><Text>{val.team12}</Text></Runner>
               <Score><Text>{val.scores1.set1}</Text></Score>
               <Score><Text>{val.scores1.set2}</Text></Score>
               <Score><Text>{val.scores1.set3}</Text></Score>
@@ -118,14 +118,14 @@ import Score from './screens/runScoreCard'
           <View style={{flexDirection:'row'}} >
               <Card><Text style={{fontSize:9}}>{val.country1}</Text></Card>
               <Winner >
-                <Text style={styles.win}>{val.runner}</Text>
-                <Text style={styles.win}>{val.runner1}</Text>
+                <Text style={styles.win}>{val.team21}</Text>
+                <Text style={styles.win}>{val.team22}</Text>
               </Winner>
               <Card><Text style={styles.win}>{val.scores2.set1}</Text></Card> 
               <Card><Text style={styles.win}>{val.scores2.set2}</Text></Card>
               <Card><Text style={styles.win}>{val.scores2.set3}</Text></Card>
               <Card><Text style={styles.win}>{val.scores2.set4}</Text></Card>
-              <Card><Text style={styles.win}>{val.scores2.set5}</Text></Card>
+              <Card><Text style={styles.win} >{val.scores2.set5}</Text></Card>
           </View> 
       </ScrollView>
     )
@@ -162,6 +162,11 @@ import Score from './screens/runScoreCard'
   win:{
     color:'#ffff',
     fontWeight:'bold',
+    fontSize:14,
+    lineHeight:18
+  },
+  lose:{
+    color:'#ffff',
     fontSize:14,
     lineHeight:18
   },
