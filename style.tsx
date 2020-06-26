@@ -52,5 +52,24 @@ export const inputStyle:any={
       fontWeight:'bold',
       textAlign:'center'
     },
+    singlesimages:{
+      width:25,
+      height:15,
+      transform: [{ translateY: -60 }],
+      marginVertical:45,
+      borderWidth:3,
+      borderRadius:16,
+      
+    },
+    playerimage:{
+      width:33,
+      height:49
+    },
+    doublesimages:{
+      width:25,
+      height:15,
+      marginHorizontal:3,
+      marginVertical:5      
+    }
   }
 

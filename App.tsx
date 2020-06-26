@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Text, View,StyleSheet,ActivityIndicator ,SafeAreaView,ScrollView, Image} from 'react-native';
+import {
+      Text, 
+      View,
+      StyleSheet,
+      ActivityIndicator,
+      SafeAreaView,
+      ScrollView, 
+      Image 
+    }from 'react-native';
 import Card from './screens/winScoreCard';
 import Runner from './screens/runPlayerCard';
 import Winner from './screens/winPlayerCard';
@@ -72,12 +80,18 @@ const styles = StyleSheet.create(inputStyle);
               <Text>{''}</Text>
               <Text style={styles.date}>{val.date}</Text>
               <Text>{''}</Text>
-              <Text style={styles.game}>{val.game}</Text><Text>{val.title}</Text><Text>{val.time}</Text>
+              <Text style={styles.game}>{val.game}</Text>
+              <Text>{val.title}</Text><Text>{val.time}</Text>
               <Text>{''}</Text>
           </View>
           <View key={key} style={{flexDirection:'row'}}  >
-              <Score><Image source={{uri:val.image1}} style={{width:33,height:49}}/><Image source={{uri:val.cou1}} style={{width:25,height:15,translateY:-60,marginVertical:45,borderWidth:3,borderRadius:16}}/></Score>
-              <Runner><Text style={styles.namesingles}>{val.players.name1}[{val.seed1}]</Text></Runner>
+              <Score>
+                <Image source={{uri:val.image1}} style={styles.playerimage}/>
+                <Image source={{uri:val.cou1}} style={styles.singlesimages}/>
+              </Score>
+              <Runner>
+                <Text style={styles.namesingles}>{val.players.name1}[{val.seed1}]</Text>
+              </Runner>
               <Score><Text style={styles.score}>{val.scores1.set1}</Text></Score>
               <Score><Text style={styles.score}>{val.scores1.set2}</Text></Score>
               <Score><Text style={styles.score}>{val.scores1.set3}</Text></Score>
@@ -85,8 +99,13 @@ const styles = StyleSheet.create(inputStyle);
               <Score><Text style={styles.score}>{val.scores1.set5}</Text></Score>
           </View>
           <View style={{flexDirection:'row'}} >
-            <Score><Image source={{uri:val.image2}} style={{width:33,height:49}}/><Image source={{uri:val.cou2}} style={{width:25,height:15,translateY:-60,marginVertical:45,borderWidth:3,borderRadius:16}}/></Score>
-              <Winner><Text style={styles.namewinsingles}>{val.players.name2}[{val.seed2}]</Text></Winner>
+            <Score>
+              <Image source={{uri:val.image2}} style={styles.playerimage}/>
+              <Image source={{uri:val.cou2}} style={styles.singlesimages}/>
+            </Score>
+              <Winner>
+                <Text style={styles.namewinsingles}>{val.players.name2}[{val.seed2}]</Text>
+              </Winner>
               <Card><Text style={styles.scorewin}>{val.scores2.set1}</Text></Card>
               <Card><Text style={styles.scorewin}>{val.scores2.set2}</Text></Card>
               <Card><Text style={styles.scorewin}>{val.scores2.set3}</Text></Card>
@@ -106,11 +125,20 @@ const styles = StyleSheet.create(inputStyle);
           <Text>{''}</Text>
           <Text style={styles.date}>{val.date}</Text>
           <Text>{''}</Text>
-          <Text style={styles.game}>{val.game}</Text><Text>{val.title}</Text><Text>{val.time}</Text>
+          <Text style={styles.game}>{val.game}</Text>
+          <Text>{val.title}</Text><Text>{val.time}</Text>
           <Text>{''}</Text>
           <View key={key} style={{flexDirection:'row'}} >
-          <Score><Image source={{uri:val.image11}} style={{width:25,height:15,marginHorizontal:3,marginVertical:5}}/><Image source={{uri:val.image12}} style={{width:25,height:15,marginVertical:3,marginHorizontal:3}}/></Score>
-              <Runner><View style={styles.namedoubles}><Text key={key} >{val.team11}</Text><Text>{val.team12}</Text></View></Runner>
+          <Score>
+            <Image source={{uri:val.image11}} style={styles.doublesimages}/>
+            <Image source={{uri:val.image12}} style={styles.doublesimages}/>
+          </Score>
+              <Runner>
+                <View style={styles.namedoubles}>
+                  <Text key={key} >{val.team11}</Text>
+                  <Text>{val.team12}</Text>
+                </View>
+              </Runner>
               <Score><Text style={styles.score}>{val.scores1.set1}</Text></Score>
               <Score><Text style={styles.score}>{val.scores1.set2}</Text></Score>
               <Score><Text style={styles.score}>{val.scores1.set3}</Text></Score>
@@ -118,7 +146,10 @@ const styles = StyleSheet.create(inputStyle);
               <Score><Text style={styles.score}>{val.scores1.set5}</Text></Score>
           </View>
           <View style={{flexDirection:'row'}} >
-          <Score><Image source={{uri:val.image21}} style={{width:25,height:15,marginHorizontal:3,marginVertical:5}}/><Image source={{uri:val.image22}} style={{width:25,height:15,marginVertical:3,marginHorizontal:3}}/></Score>
+          <Score>
+            <Image source={{uri:val.image21}} style={styles.doublesimages}/>
+            <Image source={{uri:val.image22}} style={styles.doublesimages}/>
+          </Score>
               <Winner >
                 <View style={styles.doubleview}>
                 <Text style={styles.doubleswin} >{val.team21}</Text>
