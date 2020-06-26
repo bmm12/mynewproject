@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View,StyleSheet,ActivityIndicator ,SafeAreaView,ScrollView} from 'react-native';
+import { Text, View,StyleSheet,ActivityIndicator ,SafeAreaView,ScrollView, Image} from 'react-native';
 import Card from './screens/winScoreCard';
 import Runner from './screens/runPlayerCard';
 import Winner from './screens/winPlayerCard';
@@ -73,7 +73,7 @@ import Score from './screens/runScoreCard'
               <Text>{''}</Text>
           </View>
           <View key={key} style={{flexDirection:'row'}} >
-              <Score><Text style={{fontSize:9}}>{val.country}</Text></Score>
+              <Score><Image source={{uri:val.image1}} style={{width:30,height:40}}/></Score>
               <Runner><Text key={key}>{val.players.name1}[{val.seed1}]</Text></Runner>
               <Score><Text>{val.scores1.set1}</Text></Score>
               <Score><Text>{val.scores1.set2}</Text></Score>
@@ -82,7 +82,7 @@ import Score from './screens/runScoreCard'
               <Score><Text>{val.scores1.set5}</Text></Score>
           </View>
           <View style={{flexDirection:'row'}} >
-              <Card><Text style={{fontSize:9}}>{val.coun2}</Text></Card>
+            <Score><Image source={{uri:val.image2}} style={{width:30,height:40}}/></Score>
               <Winner><Text style={styles.win}>{val.players.name2}[{val.seed2}]</Text></Winner>
               <Card><Text style={styles.win}>{val.scores2.set1}</Text></Card>
               <Card><Text style={styles.win}>{val.scores2.set2}</Text></Card>
@@ -96,7 +96,7 @@ import Score from './screens/runScoreCard'
   return choices
   }
   renderItems1=():any=>{
-    
+    console.log(this.state.dataSource)
     let choices1:any=[];
     this.state.dataSource2.map((val:any,key:any)=>{
     choices1.push(
@@ -107,7 +107,7 @@ import Score from './screens/runScoreCard'
           <Text style={styles.game}>{val.game}</Text><Text>{val.title}</Text><Text>{val.time}</Text>
           <Text>{''}</Text>
           <View key={key} style={{flexDirection:'row'}} >
-              <Score><Text style={{fontSize:9}}>{val.country}</Text></Score>
+          <Score><Image source={{uri:val.image1}} style={{width:25,height:15}}/><Image source={{uri:val.image2}} style={{width:25,height:15,marginVertical:3}}/></Score>
               <Runner><Text key={key}>{val.team11}</Text><Text>{val.team12}</Text></Runner>
               <Score><Text>{val.scores1.set1}</Text></Score>
               <Score><Text>{val.scores1.set2}</Text></Score>
