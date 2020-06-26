@@ -107,7 +107,7 @@ import Score from './screens/runScoreCard'
           <Text style={styles.game}>{val.game}</Text><Text>{val.title}</Text><Text>{val.time}</Text>
           <Text>{''}</Text>
           <View key={key} style={{flexDirection:'row'}} >
-          <Score><Image source={{uri:val.image1}} style={{width:25,height:15,borderRadius:100/2}}/><Image source={{uri:val.image2}} style={{width:25,height:15,marginVertical:3,borderRadius:100/3}}/></Score>
+          <Score><Image source={{uri:val.image1}} style={{width:25,height:15}}/><Image source={{uri:val.image2}} style={{width:25,height:15,marginVertical:3}}/></Score>
               <Runner><Text key={key}>{val.team11}</Text><Text>{val.team12}</Text></Runner>
               <Score><Text>{val.scores1.set1}</Text></Score>
               <Score><Text>{val.scores1.set2}</Text></Score>
@@ -116,7 +116,7 @@ import Score from './screens/runScoreCard'
               <Score><Text>{val.scores1.set5}</Text></Score>
           </View>
           <View style={{flexDirection:'row'}} >
-          <Score><Image source={{uri:val.image1}} style={{width:25,height:15,borderRadius:100/2}}/><Image source={{uri:val.image2}} style={{width:25,height:15,marginVertical:3,borderRadius:100/3}}/></Score>
+          <Score><Image source={{uri:val.image1}} style={{width:25,height:15}}/><Image source={{uri:val.image2}} style={{width:25,height:15,marginVertical:3}}/></Score>
               <Winner >
                 <Text style={styles.win}>{val.team21}</Text>
                 <Text style={styles.win}>{val.team22}</Text>
