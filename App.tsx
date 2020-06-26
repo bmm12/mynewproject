@@ -99,7 +99,6 @@ const styles = StyleSheet.create(inputStyle);
   return choices
   }
   renderItems1=():any=>{
-    console.log(this.state.dataSource)
     let choices1:any=[];
     this.state.dataSource2.map((val:any,key:any)=>{
     choices1.push(
