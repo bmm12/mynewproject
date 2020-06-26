@@ -72,23 +72,23 @@ import Score from './screens/runScoreCard'
               <Text style={styles.game}>{val.game}</Text><Text>{val.title}</Text><Text>{val.time}</Text>
               <Text>{''}</Text>
           </View>
-          <View key={key} style={{flexDirection:'row'}} >
-              <Score><Image source={{uri:val.image1}} style={{width:30,height:40}}/></Score>
-              <Runner><Text key={key}>{val.players.name1}[{val.seed1}]</Text></Runner>
-              <Score><Text>{val.scores1.set1}</Text></Score>
-              <Score><Text>{val.scores1.set2}</Text></Score>
-              <Score><Text>{val.scores1.set3}</Text></Score>
-              <Score><Text>{val.scores1.set4}</Text></Score>
-              <Score><Text>{val.scores1.set5}</Text></Score>
+          <View key={key} style={{flexDirection:'row'}}  >
+              <Score><Image source={{uri:val.image1}} style={{width:33,height:49}}/></Score>
+              <Runner><Text style={styles.namesingles}>{val.players.name1}[{val.seed1}]</Text></Runner>
+              <Score><Text style={styles.score}>{val.scores1.set1}</Text></Score>
+              <Score><Text style={styles.score}>{val.scores1.set2}</Text></Score>
+              <Score><Text style={styles.score}>{val.scores1.set3}</Text></Score>
+              <Score><Text style={styles.score}>{val.scores1.set4}</Text></Score>
+              <Score><Text style={styles.score}>{val.scores1.set5}</Text></Score>
           </View>
           <View style={{flexDirection:'row'}} >
-            <Score><Image source={{uri:val.image2}} style={{width:30,height:40}}/></Score>
-              <Winner><Text style={styles.win}>{val.players.name2}[{val.seed2}]</Text></Winner>
-              <Card><Text style={styles.win}>{val.scores2.set1}</Text></Card>
-              <Card><Text style={styles.win}>{val.scores2.set2}</Text></Card>
-              <Card><Text style={styles.win}>{val.scores2.set3}</Text></Card>
-              <Card><Text style={styles.win}>{val.scores2.set4}</Text></Card>
-              <Card><Text style={styles.win}>{val.scores1.set5}</Text></Card>
+            <Score><Image source={{uri:val.image2}} style={{width:33,height:49}}/></Score>
+              <Winner><Text style={styles.namewinsingles}>{val.players.name2}[{val.seed2}]</Text></Winner>
+              <Card><Text style={styles.scorewin}>{val.scores2.set1}</Text></Card>
+              <Card><Text style={styles.scorewin}>{val.scores2.set2}</Text></Card>
+              <Card><Text style={styles.scorewin}>{val.scores2.set3}</Text></Card>
+              <Card><Text style={styles.scorewin}>{val.scores2.set4}</Text></Card>
+              <Card><Text style={styles.scorewin}>{val.scores1.set5}</Text></Card>
           </View> 
       </ScrollView>
     )
@@ -107,25 +107,27 @@ import Score from './screens/runScoreCard'
           <Text style={styles.game}>{val.game}</Text><Text>{val.title}</Text><Text>{val.time}</Text>
           <Text>{''}</Text>
           <View key={key} style={{flexDirection:'row'}} >
-          <Score><Image source={{uri:val.image1}} style={{width:25,height:15}}/><Image source={{uri:val.image2}} style={{width:25,height:15,marginVertical:3}}/></Score>
-              <Runner><Text key={key}>{val.team11}</Text><Text>{val.team12}</Text></Runner>
-              <Score><Text>{val.scores1.set1}</Text></Score>
-              <Score><Text>{val.scores1.set2}</Text></Score>
-              <Score><Text>{val.scores1.set3}</Text></Score>
-              <Score><Text>{val.scores1.set4}</Text></Score>
-              <Score><Text>{val.scores1.set5}</Text></Score>
+          <Score><Image source={{uri:val.image1}} style={{width:25,height:15,marginHorizontal:3,marginVertical:5}}/><Image source={{uri:val.image2}} style={{width:25,height:15,marginVertical:3,marginHorizontal:3}}/></Score>
+              <Runner><View style={styles.namedoubles}><Text key={key} >{val.team11}</Text><Text>{val.team12}</Text></View></Runner>
+              <Score><Text style={styles.score}>{val.scores1.set1}</Text></Score>
+              <Score><Text style={styles.score}>{val.scores1.set2}</Text></Score>
+              <Score><Text style={styles.score}>{val.scores1.set3}</Text></Score>
+              <Score><Text style={styles.score}>{val.scores1.set4}</Text></Score>
+              <Score><Text style={styles.score}>{val.scores1.set5}</Text></Score>
           </View>
           <View style={{flexDirection:'row'}} >
-          <Score><Image source={{uri:val.image1}} style={{width:25,height:15}}/><Image source={{uri:val.image2}} style={{width:25,height:15,marginVertical:3}}/></Score>
+          <Score><Image source={{uri:val.image1}} style={{width:25,height:15,marginHorizontal:3,marginVertical:5}}/><Image source={{uri:val.image2}} style={{width:25,height:15,marginVertical:3,marginHorizontal:3}}/></Score>
               <Winner >
-                <Text style={styles.win}>{val.team21}</Text>
-                <Text style={styles.win}>{val.team22}</Text>
+                <View style={styles.doubleview}>
+                <Text style={styles.doubleswin} >{val.team21}</Text>
+                <Text style={styles.doubleswin}>{val.team22}</Text>
+                </View>
               </Winner>
-              <Card><Text style={styles.win}>{val.scores2.set1}</Text></Card> 
-              <Card><Text style={styles.win}>{val.scores2.set2}</Text></Card>
-              <Card><Text style={styles.win}>{val.scores2.set3}</Text></Card>
-              <Card><Text style={styles.win}>{val.scores2.set4}</Text></Card>
-              <Card><Text style={styles.win} >{val.scores2.set5}</Text></Card>
+              <Card><Text style={styles.scorewin}>{val.scores2.set1}</Text></Card> 
+              <Card><Text style={styles.scorewin}>{val.scores2.set2}</Text></Card>
+              <Card><Text style={styles.scorewin}>{val.scores2.set3}</Text></Card>
+              <Card><Text style={styles.scorewin}>{val.scores2.set4}</Text></Card>
+              <Card><Text style={styles.scorewin} >{val.scores2.set5}</Text></Card>
           </View> 
       </ScrollView>
     )
@@ -159,16 +161,43 @@ import Score from './screens/runScoreCard'
     alignItems: 'center',
     backgroundColor:'#fff',
   },
-  win:{
+  namewinsingles:{
     color:'#ffff',
     fontWeight:'bold',
     fontSize:14,
-    lineHeight:18
+    lineHeight:18,
+    marginVertical:14,
+    marginHorizontal:4
   },
-  lose:{
+  namesingles:{
+    marginHorizontal:4,
+    marginVertical:14,
+  },
+  doubleview:{
+    marginVertical:4,
+    marginHorizontal:4
+  },
+  doubleswin:{
     color:'#ffff',
+    fontWeight:'bold',
     fontSize:14,
-    lineHeight:18
+    lineHeight:18,
+  },
+  namedoubles:{
+    marginHorizontal:4,
+    marginVertical:4,
+  },
+  score:{
+    marginVertical:14,
+    marginHorizontal:10
+  },
+  scorewin:{
+    marginVertical:14,
+    marginHorizontal:10,
+    color:'#ffff',
+    fontWeight:'bold',
+    fontSize:14,
+    lineHeight:18,
   },
   game:{
     color:'#639080',
@@ -177,7 +206,7 @@ import Score from './screens/runScoreCard'
   date:{
     fontWeight:'bold',
     textAlign:'center'
-  }
+  },
 });
 
 export default App
