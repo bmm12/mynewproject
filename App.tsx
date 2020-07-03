@@ -1,17 +1,15 @@
 import * as React from 'react';
 import {
-      Text, 
       View,
       StyleSheet,
       ActivityIndicator,
       SafeAreaView,
       ScrollView, 
-      Image 
     }from 'react-native';
-import Card from './screens/winScoreCard';
-import Runner from './screens/runPlayerCard';
-import Winner from './screens/winPlayerCard';
-import Score from './screens/runScoreCard'
+import ScoreCards from './scorecards';
+import WinScoreCards from './winscorecards';
+import DoublesWinScoreCards from './doubleswinscorecard';
+import DoublesScoreCards from './doublescorecard';
 import { inputStyle } from './style';
 
 const styles = StyleSheet.create(inputStyle);
@@ -35,7 +33,6 @@ const styles = StyleSheet.create(inputStyle);
     isLoading:any,
     dataSource:any,
     dataSource2:any,
-    dates:any
   }
 
   class App extends React.Component{
@@ -43,7 +40,6 @@ const styles = StyleSheet.create(inputStyle);
       isLoading:true,
       dataSource:[],
       dataSource2:[],
-      dates:[]
     }  
 
     player: Player={
@@ -62,112 +58,49 @@ const styles = StyleSheet.create(inputStyle);
       this.setState({
         isLoading:false,
         dataSource:responseJson[0].singles,
-        dataSource2:responseJson[0].doubles
-      })
+        dataSource2:responseJson[0].doubles,
+        })
+
     })
     .catch((error)=>{
       console.log(error)
     })
+    
   }
+ 
   
   renderItems=():any=>{
   
     let choices:any=[];
     this.state.dataSource.map((val:any,key:any)=>{
+      if(val.win=='2'){
     choices.push(
-      <ScrollView style={{flexDirection:'column'}} key={key}>
-          <View>
-              <Text>{''}</Text>
-              <Text style={styles.date}>{val.date}</Text>
-              <Text>{''}</Text>
-              <Text style={styles.game}>{val.game}</Text>
-              <Text>{val.title}</Text><Text>{val.time}</Text>
-              <Text>{''}</Text>
-          </View>
-          <View key={key} style={{flexDirection:'row'}}  >
-              <Score>
-                <Image source={{uri:val.image1}} style={styles.playerimage}/>
-                <Image source={{uri:val.cou1}} style={styles.singlesimages}/>
-              </Score>
-              <Runner>
-                <Text style={styles.namesingles}>{val.players.name1}[{val.seed1}]</Text>
-              </Runner>
-              <Score><Text style={styles.score}>{val.scores1.set1}</Text></Score>
-              <Score><Text style={styles.score}>{val.scores1.set2}</Text></Score>
-              <Score><Text style={styles.score}>{val.scores1.set3}</Text></Score>
-              <Score><Text style={styles.score}>{val.scores1.set4}</Text></Score>
-              <Score><Text style={styles.score}>{val.scores1.set5}</Text></Score>
-          </View>
-          <View style={{flexDirection:'row'}} >
-            <Score>
-              <Image source={{uri:val.image2}} style={styles.playerimage}/>
-              <Image source={{uri:val.cou2}} style={styles.singlesimages}/>
-            </Score>
-              <Winner>
-                <Text style={styles.namewinsingles}>{val.players.name2}[{val.seed2}]</Text>
-              </Winner>
-              <Card><Text style={styles.scorewin}>{val.scores2.set1}</Text></Card>
-              <Card><Text style={styles.scorewin}>{val.scores2.set2}</Text></Card>
-              <Card><Text style={styles.scorewin}>{val.scores2.set3}</Text></Card>
-              <Card><Text style={styles.scorewin}>{val.scores2.set4}</Text></Card>
-              <Card><Text style={styles.scorewin}>{val.scores1.set5}</Text></Card>
-          </View> 
-      </ScrollView>
-    )
-  })
+      <ScoreCards data={val}  key={key}/>
+    )}
+    else{
+      choices.push(
+        <WinScoreCards data={val} key={key} />
+      )}
+    })
   return choices
   }
+
   renderItems1=():any=>{
     let choices1:any=[];
     this.state.dataSource2.map((val:any,key:any)=>{
+      if(val.winteam=='team22'){
     choices1.push(
-      <ScrollView style={{flexDirection:'column'}} key={key}>
-          <Text>{''}</Text>
-          <Text style={styles.date}>{val.date}</Text>
-          <Text>{''}</Text>
-          <Text style={styles.game}>{val.game}</Text>
-          <Text>{val.title}</Text><Text>{val.time}</Text>
-          <Text>{''}</Text>
-          <View key={key} style={{flexDirection:'row'}} >
-          <Score>
-            <Image source={{uri:val.image11}} style={styles.doublesimages}/>
-            <Image source={{uri:val.image12}} style={styles.doublesimages}/>
-          </Score>
-              <Runner>
-                <View style={styles.namedoubles}>
-                  <Text key={key} >{val.team11}</Text>
-                  <Text>{val.team12}</Text>
-                </View>
-              </Runner>
-              <Score><Text style={styles.score}>{val.scores1.set1}</Text></Score>
-              <Score><Text style={styles.score}>{val.scores1.set2}</Text></Score>
-              <Score><Text style={styles.score}>{val.scores1.set3}</Text></Score>
-              <Score><Text style={styles.score}>{val.scores1.set4}</Text></Score>
-              <Score><Text style={styles.score}>{val.scores1.set5}</Text></Score>
-          </View>
-          <View style={{flexDirection:'row'}} >
-          <Score>
-            <Image source={{uri:val.image21}} style={styles.doublesimages}/>
-            <Image source={{uri:val.image22}} style={styles.doublesimages}/>
-          </Score>
-              <Winner >
-                <View style={styles.doubleview}>
-                <Text style={styles.doubleswin} >{val.team21}</Text>
-                <Text style={styles.doubleswin}>{val.team22}</Text>
-                </View>
-              </Winner>
-              <Card><Text style={styles.scorewin}>{val.scores2.set1}</Text></Card> 
-              <Card><Text style={styles.scorewin}>{val.scores2.set2}</Text></Card>
-              <Card><Text style={styles.scorewin}>{val.scores2.set3}</Text></Card>
-              <Card><Text style={styles.scorewin}>{val.scores2.set4}</Text></Card>
-              <Card><Text style={styles.scorewin} >{val.scores2.set5}</Text></Card>
-          </View> 
-      </ScrollView>
-    )
+      <DoublesWinScoreCards data={val} key={key}/>
+    )}
+    else{
+    choices1.push(
+      <DoublesScoreCards data={val} key={key} />
+    )}
   })
   return choices1
   }
   render(){
+
           if(this.state.isLoading){
             return(
               <View style={styles.container}>
@@ -176,7 +109,8 @@ const styles = StyleSheet.create(inputStyle);
             )
             }
           else{
-            return  <SafeAreaView style={{marginLeft:8,marginRight:4}}>
+            
+            return  <SafeAreaView style={styles.safearea}>
                       <ScrollView >
                           {this.renderItems()}
                           {this.renderItems1()}

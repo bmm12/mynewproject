@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, View} from 'react-native';
+import { inputStyle } from '../style';
 
+const styles = StyleSheet.create(inputStyle);
 export default function Score(props:any){
     return (
-        <View style={styles.card}>
+        <View style={styles.scorecard2}>
             <View >
                 {props.children}
                 </View>
@@ -11,15 +13,3 @@ export default function Score(props:any){
     )
 }
 
-const styles=StyleSheet.create({
-    card:{
-        borderWidth:0.25,
-        borderColor:'black',
-        backgroundColor:'#fff',
-        marginHorizontal:1,
-        marginVertical:1,
-        width:34,
-        height:50
-    },
-    
-})
