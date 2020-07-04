@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View} from 'react-native';
-import styles from '../style';
+import {  View} from 'react-native';
 
 export default function Card(props:any){
     return (
