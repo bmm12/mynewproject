@@ -1,4 +1,6 @@
-export const inputStyle:any={
+import {StyleSheet} from 'react-native';
+
+const styles = StyleSheet.create({
     safearea:{
       marginLeft:8,
       marginRight:4
@@ -138,5 +140,6 @@ export const inputStyle:any={
       width:128,
       height:50
     }
-  }
+  })
 
+export default styles;

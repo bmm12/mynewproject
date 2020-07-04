@@ -10,9 +10,8 @@ import ScoreCards from './scorecards';
 import WinScoreCards from './winscorecards';
 import DoublesWinScoreCards from './doubleswinscorecard';
 import DoublesScoreCards from './doublescorecard';
-import { inputStyle } from './style';
+import styles from './style';
 
-const styles = StyleSheet.create(inputStyle);
 
   export interface Player{
       country:string;
@@ -75,7 +74,7 @@ const styles = StyleSheet.create(inputStyle);
     this.state.dataSource.map((val:any,key:any)=>{
       if(val.win=='2'){
     choices.push(
-      <ScoreCards data={val}  key={key}/>
+        <ScoreCards data={val}  key={key}/>
     )}
     else{
       choices.push(
