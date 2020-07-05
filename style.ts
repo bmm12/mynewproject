@@ -8,9 +8,6 @@ const styles = StyleSheet.create({
     cards:{
       flexDirection:'row'
     },
-    colcards:{
-      flexDirection:'column'
-    },
     container: {
       flex: 1,
       justifyContent: 'center',
@@ -29,18 +26,16 @@ const styles = StyleSheet.create({
       marginHorizontal:4,
       marginVertical:14,
     },
-    doubleview:{
+    doublenameview:{
       marginVertical:4,
       marginHorizontal:4
-    },
-    doubleswin:{
-      color:'#ffff',
-      fontWeight:'bold',
-      fontSize:14,
     },
     doublesnamewin:{
       color:'#ffff',
       fontWeight:'bold',
+    },
+    doublesname:{
+      color:'black'
     },
     doubleswintie:{
       color:'#ffff',
@@ -48,9 +43,10 @@ const styles = StyleSheet.create({
       fontSize:10,
       lineHeight:14,
     },
-    namedoubles:{
-      marginHorizontal:4,
-      marginVertical:4,
+    doubletie:{
+      lineHeight:14, 
+      fontSize:10,
+      
     },
     score:{
       marginVertical:14,
@@ -96,24 +92,19 @@ const styles = StyleSheet.create({
       marginHorizontal:3,
       marginVertical:5      
     },
-    doubletie:{
-      lineHeight:14, 
-      fontSize:10
-    },
+    
     doublebase:{
       lineHeight:30,
-      fontSize:14
+      fontSize:14,
     },
-    scorecard1:{
-      borderWidth:0.25,
-      borderColor:'black',
-      backgroundColor:'#639080',
-      marginHorizontal:1,
-      marginVertical:1,
-      width:34,
-      height:50
+    doublewinbase:{
+      lineHeight:30,
+      fontSize:14,
+      color:'#ffff',
+      fontWeight:'bold',
     },
-    scorecard2:{
+
+    scorecard:{
       borderWidth:0.25,
       borderColor:'black',
       backgroundColor:'#fff',
@@ -122,16 +113,8 @@ const styles = StyleSheet.create({
       width:34,
       height:50
     },
-    playercard1:{
-      borderWidth:0.25,
-      borderColor:'black',
-      backgroundColor:'#639080',
-      marginHorizontal:1,
-      marginVertical:1,
-      width:128,
-      height:50
-    },
-    playercard2:{
+
+    playercard:{
       borderWidth:0.25,
       borderColor:'black',
       backgroundColor:'#fff',

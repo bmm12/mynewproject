@@ -5,12 +5,8 @@ import {
       SafeAreaView,
       ScrollView, 
     }from 'react-native';
-import ScoreCards from './scorecards';
-import WinScoreCards from './winscorecards';
-import DoublesWinScoreCards from './doubleswinscorecard';
-import DoublesScoreCards from './doublescorecard';
 import styles from './style';
-
+import SingleCard from './singlecard';
 
   export interface Player{
       country:string;
@@ -23,31 +19,18 @@ import styles from './style';
       seed?:string;
       profileURL?:string;
   }
-  export interface PlayersData{
-    team1:Player[];
-    team2:Player[];
-  }
-  export interface State{
+    export interface State{
     isLoading:any,
     dataSource:any,
-    dataSource2:any,
   }
 
-  class App extends React.Component{
+   class App extends React.Component{
     state={
       isLoading:true,
       dataSource:[],
-      dataSource2:[],
     }  
 
-    player: Player={
-      country:'',
-      id:'',
-      name:'',
-      scores1:[],
-      scores2:[],
-    
-    }
+
 
   componentDidMount(){
     return fetch('https://private-10425-bmm12.apiary-mock.com/questions')
@@ -55,8 +38,7 @@ import styles from './style';
     .then((responseJson)=>{
       this.setState({
         isLoading:false,
-        dataSource:responseJson[0].singles,
-        dataSource2:responseJson[0].doubles,
+        dataSource:responseJson[0].singles.concat(responseJson[0].doubles),
         })
 
     })
@@ -68,41 +50,28 @@ import styles from './style';
  
   
   renderItems=():any=>{
-  
+    var item = this.state.dataSource.sort((a:Object,b:Object)=>(Date.parse(a.date) > Date.parse(b.date)) ? -1:1)
     let choices:any=[];
-    this.state.dataSource.map((val:any,key:any)=>{
+    item.map((val:any,key:any)=>{
       if(val.win=='2'){
     choices.push(
-        <ScoreCards data={val}  key={key}/>
+        <SingleCard data={val}  key={key}/>
     )}
     else{
       choices.push(
-        <WinScoreCards data={val} key={key} />
+        <SingleCard data={val} key={key} />
       )}
     })
   return choices
   }
 
-  renderItems1=():any=>{
-    let choices1:any=[];
-    this.state.dataSource2.map((val:any,key:any)=>{
-      if(val.winteam=='team22'){
-    choices1.push(
-      <DoublesWinScoreCards data={val} key={key}/>
-    )}
-    else{
-    choices1.push(
-      <DoublesScoreCards data={val} key={key} />
-    )}
-  })
-  return choices1
-  }
+
   render(){
 
           if(this.state.isLoading){
             return(
               <View style={styles.container}>
-                <ActivityIndicator/>
+                <ActivityIndicator size='large'/>
               </View>
             )
             }
@@ -111,7 +80,6 @@ import styles from './style';
             return  <SafeAreaView style={styles.safearea}>
                       <ScrollView >
                           {this.renderItems()}
-                          {this.renderItems1()}
                       </ScrollView>
                     </SafeAreaView>
               }
